@@ -1,8 +1,9 @@
 # Portfolio
+
 Un site immersif qui reflète mon identité, mon parcours et mes compétences tech. Moderne, interactif, minimaliste.
-'''
+
+```text
 portfolio/
-│
 ├── frontend/
 │   ├── index.php
 │   ├── about.php
@@ -11,23 +12,19 @@ portfolio/
 │   ├── contact.php
 │   ├── header.php
 │   ├── footer.php
-│   ├── /assets/
-│   │   ├── /css/
+│   ├── assets/
+│   │   ├── css/
 │   │   │   └── style.css
-│   │   ├── /images/
-│   │   ├── /js/
-│   │   └── /pdf/
+│   │   ├── images/
+│   │   ├── js/
+│   │   └── pdf/
 │   │       └── cv.pdf
-│
 ├── backend/
 │   ├── send_mail.php
 │   ├── config.php
-│   └── /includes/
+│   └── includes/
 │       └── utils.php
-│
 └── deployment/
     ├── .htaccess
     └── README.md
-
-
-'''
+```
