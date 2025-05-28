@@ -1,22 +1,32 @@
-<?php include 'header.php'; ?>
-<div class="container mt-5">
-  <h2>Me Contacter</h2>
-  <form action="../backend/send_mail.php" method="POST">
-    <div class="mb-3">
-      <label for="name">Nom</label>
-      <input type="text" name="name" class="form-control" required>
-    </div>
-    <div class="mb-3">
-      <label for="email">Email</label>
-      <input type="email" name="email" class="form-control" required>
-    </div>
-    <div class="mb-3">
-      <label for="message">Message</label>
-      <textarea name="message" class="form-control" rows="5" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-primary">Envoyer</button>
-  </form>
-</div>
-<?php include 'footer.php'; ?>
+<?php
+// Configuration : à personnaliser
+$to = "achraflamina.com"; // Mon adresse email pour recevoir les messages
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Sécuriser les champs
+    $name = htmlspecialchars(trim($_POST["name"]));
+    $email = htmlspecialchars(trim($_POST["email"]));
+    $message = htmlspecialchars(trim($_POST["message"]));
+
+    // Vérification basique
+    if (!empty($name) && !empty($email) && !empty($message)) {
+        $subject = "Nouveau message de ton portfolio";
+        $body = "Nom: $name\nEmail: $email\n\nMessage:\n$message";
+
+        $headers = "From: $email";
+
+        // Envoi
+        if (mail($to, $subject, $body, $headers)) {
+            echo "<script>alert('Merci pour votre message !'); window.location.href='contact.html';</script>";
+        } else {
+            echo "<script>alert('Erreur lors de l’envoi.'); window.history.back();</script>";
+        }
+    } else {
+        echo "<script>alert('Tous les champs sont obligatoires.'); window.history.back();</script>";
+    }
+} else {
+    echo "<script>alert('Méthode non autorisée.'); window.location.href='contact.html';</script>";
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
